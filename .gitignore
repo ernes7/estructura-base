@@ -1,7 +1,7 @@
 backend/.env
 .idea/
 backend/backend/__pycache__/
-
+frontend/package-lock.json
 
 *.pyc
 /backend/db.sqlite3
@@ -18,13 +18,6 @@ __pycache__/
 
 # data
 *.dump
-
-# npm
-node_modules/
-npm-debug.log
-
-# Webpack
-/frontend/bundles/*
 
 # General
 /venv/
