@@ -1,0 +1,30 @@
+backend/.env
+.idea/
+backend/backend/__pycache__/
+frontend/package-lock.json
+
+*.pyc
+/backend/db.sqlite3
+.DS_Store
+.env
+*/settings/local.py
+/staticfiles/*
+/mediafiles/*
+__pycache__/
+/.vscode/
+
+# pycharm
+.idea/
+
+# data
+*.dump
+
+# General
+/venv/
+/env/
+/output/
+/cache/
+
+.direnv
+.envrc
+.tool-versions
