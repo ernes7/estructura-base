@@ -1,4 +1,3 @@
-import '@/styles/globals.css';
 // BOOTSTRAP 5
 import 'bootstrap/dist/css/bootstrap.css';
 
