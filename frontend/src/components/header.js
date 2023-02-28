@@ -1,91 +1,41 @@
-import Link from 'next/link';
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 
-function Header() {
-    const [dropdownOpen, setDropdownOpen] = React.useState(false);
-    const toggle = () => setDropdownOpen(!dropdownOpen);
+const Header = () => {
+  const [show, setShow] = useState(false);
 
-    return (
-        <nav className="navbar navbar-expand-md navbar-light bg-light">
-            <div className="container-fluid">
-                <Link className="navbar-brand" href="/" passHref>
-                    <img src="/logo.png" alt="Logo" />
-                </Link>
-                <button
-                className="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarNav"
-                aria-controls="navbarNav"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-                >
-                <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarNav">
-                <ul className="navbar-nav me-auto mb-2 mb-md-0">
-                    <li className="nav-item">
-                    <Link className="nav-link" href="/" passHref>
-                        Inicio
-                    </Link>
-                    </li>
-                    <li className="nav-item">
-                    <Link className="nav-link" href="/acerca-de" passHref>
-                        Acerca de
-                    </Link>
-                    </li>
-                    <li className="nav-item dropdown">
-                    <a
-                        className="nav-link dropdown-toggle"
-                        href="#"
-                        role="button"
-                        data-bs-toggle="dropdown"
-                        aria-expanded={dropdownOpen}
-                        onClick={toggle}
-                    >
-                        Categorías
-                    </a>
-                    <ul className={`dropdown-menu ${dropdownOpen ? 'show' : ''}`}>
-                        <li>
-                        <Link className="dropdown-item" href="/categorias/noticias" passHref>
-                            Noticias
-                        </Link>
-                        </li>
-                        <li>
-                        <Link className="dropdown-item" href="/categorias/eventos" passHref>
-                            Eventos
-                        </Link>
-                        </li>
-                    </ul>
-                    </li>
-                </ul>
-                <ul className="navbar-nav">
-                    <li className="nav-item">
-                    <a className="nav-link" href="#">
-                        <i className="bi bi-facebook"></i>
-                    </a>
-                    </li>
-                    <li className="nav-item">
-                    <a className="nav-link" href="#">
-                        <i className="bi bi-twitter"></i>
-                    </a>
-                    </li>
-                    <li className="nav-item">
-                    <a className="nav-link" href="#">
-                        <i className="bi bi-instagram"></i>
-                    </a>
-                    </li>
-                    <li className="nav-item">
-                    <a className="nav-link" href="tel:123456789">
-                        <i className="bi bi-telephone"></i> 123-456-789
-                    </a>
-                    </li>
-                </ul>
-                </div>
-            </div>
-        </nav>
-    )
+  const handleMouseEnter = () => setShow(true);
+  const handleMouseLeave = () => setShow(false);
+
+  return (
+    <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
+      <Navbar.Brand href="#">My Website</Navbar.Brand>
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      <Navbar.Collapse id="responsive-navbar-nav">
+        <Nav className="mr-auto">
+          <Nav.Link href="#">Home</Nav.Link>
+          <Nav.Link href="#">About</Nav.Link>
+          <NavDropdown
+            title="Dropdown"
+            id="basic-nav-dropdown"
+            show={show}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            <NavDropdown.Item href="#">Action</NavDropdown.Item>
+            <NavDropdown.Item href="#">Another action</NavDropdown.Item>
+            <NavDropdown.Item href="#">Something</NavDropdown.Item>
+            <NavDropdown.Divider />
+            <NavDropdown.Item href="#">Separated link</NavDropdown.Item>
+          </NavDropdown>
+        </Nav>
+        <Nav>
+          <Nav.Link href="#">Login</Nav.Link>
+          <Nav.Link href="#">Register</Nav.Link>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
+  );
 };
 
 export default Header;
